@@ -22,14 +22,9 @@ def define_argparser():
     '''
     p = argparse.ArgumentParser()
 
-    # p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/CXR-BERT-specialized.pth')
-    # p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/Bio_ClinicalBERT.pth')
-    p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/PubMedBERT.pth')
-    # p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/bert-base-uncased.pth')
-    # p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/test_model_bin.pth')
+    p.add_argument('--model_fn', default='/home/workspace/helper/checkpoints/bert-base-uncased.pth')
 
-    p.add_argument('--predict_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_dev_v1.jsonl')
-    # p.add_argument('--predict_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_test_v1.jsonl')
+    p.add_argument('--predict_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_test_v1.jsonl')
     p.add_argument('--output_fn', default='/home/workspace/prediction.txt')
     p.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda'])
     p.add_argument('--batch_size', type=int, default=64)
