@@ -25,28 +25,22 @@ def define_argparser():
 
     p = argparse.ArgumentParser()
 
-    # p.add_argument('--model_fn', default='./helper/checkpoints/bert-base-uncased.pth')
-    # p.add_argument('--model_fn', default='./helper/checkpoints/Bio_ClinicalBERT.pth')
-    # p.add_argument('--model_fn', default='./helper/checkpoints/CXR-BERT-specialized.pth')
-    # p.add_argument('--model_fn', default='./helper/checkpoints/PubMedBERT.pth')
-    p.add_argument('--model_fn', default='./helper/checkpoints/cpu_test_model_bin.pth')
+    p.add_argument('--model_fn', default='./helper/bert-base-uncased.pth')
 
     p.add_argument('--train_fn', default='/home/data/mednli/1.0.0/mli_train_v1.jsonl')
     p.add_argument('--valid_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_dev_v1.jsonl')
-    p.add_argument('--test_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_dev_v1.jsonl')
+    p.add_argument('--test_fn', default='/home/data/radnli-report-inference/1.0.0/radnli_test_v1.jsonl')
 
     p.add_argument('--pretrained_model_name', type=str, default='bert-base-uncased', choices=['bert-base-uncased', 'emilyalsentzer/Bio_ClinicalBERT', 'microsoft/BiomedVLP-CXR-BERT-specialized', 'microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext'])
-    # p.add_argument('--checkpoint_path', type=str, default=None, choices=['/home/workspace/helper/checkpoints_from_others/test_pytorch_model.bin'])
-    p.add_argument('--checkpoint_path', type=str, default='/home/workspace/helper/checkpoints_from_others/test_checkpoint.bin', choices=['/home/workspace/helper/checkpoints_from_others/test_checkpoint.bin'])
+    p.add_argument('--checkpoint_path', type=str, default=None)
 
     p.add_argument('--hidden_size', type=int, default=768)
     p.add_argument('--freeze_embeddings', type=bool, default=False)
 
-    # p.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda'])
-    p.add_argument('--device', type=str, default='cpu', choices=['cpu', 'cuda'])
+    p.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda'])
 
     p.add_argument('--batch_size', type=int, default=700)
-    p.add_argument('--n_epochs', type=int, default=1)
+    p.add_argument('--n_epochs', type=int, default=20)
 
     p.add_argument('--lr', type=float, default=3e-5)
     p.add_argument('--warmup_ratio', type=float, default=.1)
